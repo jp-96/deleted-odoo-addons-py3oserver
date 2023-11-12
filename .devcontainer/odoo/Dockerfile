@@ -77,8 +77,8 @@ USER vscode
 ARG OCA_VERSION=${ODOO_VERSION}
 RUN git clone --branch=${OCA_VERSION} --depth=1 https://github.com/OCA/reporting-engine.git oca/reporting-engine
 USER root
-# # Install oca/reporting-engine dependencies
-# RUN pip3 --disable-pip-version-check --no-cache-dir install -r oca/reporting-engine/requirements.txt
+# Install oca/reporting-engine dependencies
+RUN pip3 --disable-pip-version-check --no-cache-dir install -r oca/reporting-engine/requirements.txt
 
 # Install py3o
 #  - the special unicode symbols for phone/fax/email
@@ -87,8 +87,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #  - libreoffice
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends libreoffice
-#  - report_py3o
-RUN pip3 --disable-pip-version-check --no-cache-dir install --upgrade py3o.template py3o.formats
+# #  - report_py3o
+# RUN pip3 --disable-pip-version-check --no-cache-dir install --upgrade py3o.template py3o.formats
 # #  - report_py3o_fusion_server
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends default-jre ure libgoogle-gson-java libreoffice-java-common libreoffice-writer

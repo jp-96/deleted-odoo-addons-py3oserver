@@ -25,6 +25,7 @@ services:
     depends_on: 
       - db
       - lb
+      - py3o
     tty: true
     command: bash
     entrypoint: /opt/odoo/entrypoint.sh
@@ -46,6 +47,11 @@ services:
     - ./nginx/conf.d:/etc/nginx/conf.d:cached
     ports:
     - 80:80
+  py3o:
+    image: xcgd/py3o:1.0.0
+    #container_name: "py3o"
+    ports:
+      - "8765:8765"
 volumes:
   odoo-data:
   postgres-data:

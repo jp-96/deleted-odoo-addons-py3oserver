@@ -48,8 +48,13 @@ services:
     ports:
     - 80:80
   py3o:
-    image: xcgd/py3o:1.0.0
+    image: py3o:1.0.0
     #container_name: "py3o"
+    build:
+      context: "."
+      dockerfile: py3o/Dockerfile
+      args:
+        VARIANT: "1.0.0"
     ports:
       - "8765:8765"
 volumes:

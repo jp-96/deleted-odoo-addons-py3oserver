@@ -51,8 +51,8 @@ services:
     image: py3o
     #container_name: "py3o"
     build:
-      context: "."
-      dockerfile: py3o/Dockerfile
+      context: "./py3o"
+      dockerfile: Dockerfile
     ports:
       - "8765:8765"
 volumes:

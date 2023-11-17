@@ -1,0 +1,20 @@
+--- "py3o/template/main.py"
++++ "py3o/template/main.py"
+@@ -1231,7 +1231,7 @@ class Template(object):
+             ):
+                 # Find the identifier of the image
+                 # (py3o.staticimage[identifier]).
+-                image_id = draw_frame.attrib[
++                image_id = "Pictures/" + draw_frame.attrib[
+                     "{%s}name" % self.namespaces["draw"]
+                 ][5:]
+                 if image_id not in self.images:
+@@ -1417,7 +1417,7 @@ class Template(object):
+         @type data: binary
+         """
+ 
+-        self.images[identifier] = {"data": data, "mime_type": mime_type}
++        self.images["Pictures/" + identifier] = {"data": data, "mime_type": mime_type}
+ 
+     def __save_output(self):
+         """Saves the output into a native OOo document format.

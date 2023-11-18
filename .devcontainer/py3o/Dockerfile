@@ -122,5 +122,13 @@ RUN mkdir -p /tmp/ipafonts && cd /tmp/ipafonts \
     && fc-cache -vf \
     && rm -rf /tmp/ipafonts
 
-RUN cd
+# patch - py3o.template
+RUN pip uninstall -y py3o.template \
+    && mkdir -p /root/py3o && cd /root/py3o \
+    && curl -o py3o.template-0.10.0.tar.gz https://files.pythonhosted.org/packages/96/f6/698c45e3cc74ce801126a1f91d628884867e3c9b20dcfca2402ea3c803a7/py3o.template-0.10.0.tar.gz \
+	&& tar -zxvf py3o.template-0.10.0.tar.gz \
+    && cd py3o.template-0.10.0 \
+	&& patch py3o/template/main.py < /usr/local/src/staticimage.patch \
+	&& python setup.py build && python setup.py install
+
 ADD example /root/example

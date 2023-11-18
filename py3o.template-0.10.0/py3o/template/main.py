@@ -1394,8 +1394,9 @@ class Template(object):
     def set_image_path(self, identifier, path):
         """Set data for an image mentioned in the template.
 
-        @param identifier: Identifier of the image which starts with "staticimage"; refer to the placeholder image
-        in the template by setting "py3o.staticimage[identifier]" as the name of that image.
+        @param identifier: Identifier of the image which starts with
+        "staticimage"; refer to the placeholder image in the template by
+        setting "py3o.staticimage[identifier]" as the name of that image.
         @type identifier: string
 
         @param path: Image path on the file system
@@ -1407,7 +1408,7 @@ class Template(object):
         self.set_image_data(image_id, f.read())
         f.close()
 
-    def set_image_data(self, image_id, data, mime_type=None):
+    def set_image_data(self, identifier, data, mime_type=None):
         """Set data for an image mentioned in the template.
 
         @param identifier: Identifier of the image; refer to the image in the
@@ -1418,8 +1419,8 @@ class Template(object):
         @param data: Contents of the image.
         @type data: binary
         """
-        
-        self.images[image_id] = {"data": data, "mime_type": mime_type}
+
+        self.images[identifier] = {"data": data, "mime_type": mime_type}
 
     def __save_output(self):
         """Saves the output into a native OOo document format.

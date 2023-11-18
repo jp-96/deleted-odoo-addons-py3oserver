@@ -1,20 +1,26 @@
---- "py3o/template/main.py"
-+++ "py3o/template/main.py"
-@@ -1231,7 +1231,7 @@ class Template(object):
-             ):
-                 # Find the identifier of the image
-                 # (py3o.staticimage[identifier]).
--                image_id = draw_frame.attrib[
-+                image_id = "Pictures/" + draw_frame.attrib[
-                     "{%s}name" % self.namespaces["draw"]
-                 ][5:]
-                 if image_id not in self.images:
-@@ -1417,7 +1417,7 @@ class Template(object):
-         @type data: binary
-         """
- 
--        self.images[identifier] = {"data": data, "mime_type": mime_type}
-+        self.images["Pictures/" + identifier] = {"data": data, "mime_type": mime_type}
- 
-     def __save_output(self):
-         """Saves the output into a native OOo document format.
+1218c1218
+<         "py3o.staticimage.") to point to a file saved the "Pictures"
+---
+>         "py3o.staticimage") to point to a file saved the "Pictures"
+1234c1234
+<                 image_id = draw_frame.attrib[
+---
+>                 identifier = draw_frame.attrib[
+1236a1237
+>                 image_id = "Pictures/" + identifier
+1243c1244
+<                             % image_id
+---
+>                             % identifier
+1396,1397c1397,1399
+<         @param identifier: Identifier of the image; refer to the image in the
+<         template by setting "py3o.[identifier]" as the name of that image.
+---
+>         @param identifier: Identifier of the image which starts with
+>         "staticimage"; refer to the placeholder image in the template by
+>         setting "py3o.staticimage[identifier]" as the name of that image.
+1405c1407,1408
+<         self.set_image_data(identifier, f.read())
+---
+>         image_id = "Pictures/" + identifier
+>         self.set_image_data(image_id, f.read())

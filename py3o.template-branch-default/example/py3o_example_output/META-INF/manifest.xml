@@ -1,0 +1,12 @@
+<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" manifest:version="1.2">
+ <manifest:file-entry manifest:full-path="/" manifest:version="1.2" manifest:media-type="application/vnd.oasis.opendocument.text"/>
+ <manifest:file-entry manifest:full-path="Thumbnails/thumbnail.png" manifest:media-type="image/png"/>
+ <manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="settings.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="Pictures/10000201000000C80000006421FE7E15.png" manifest:media-type="image/png"/>
+ <manifest:file-entry manifest:full-path="styles.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="manifest.rdf" manifest:media-type="application/rdf+xml"/>
+ <manifest:file-entry manifest:full-path="Configurations2/accelerator/current.xml" manifest:media-type=""/>
+ <manifest:file-entry manifest:full-path="Configurations2/" manifest:media-type="application/vnd.sun.xml.ui.configuration"/>
+<manifest:file-entry manifest:full-path="./staticimage.logo" manifest:media-type=""/><manifest:file-entry manifest:full-path="Pictures/0bbf7ae9331d972d29ef84771db6efdc0fc8b27e881cab5a4d2a2ee8bf06d40b" manifest:media-type="png"/><manifest:file-entry manifest:full-path="Pictures/8a9ec2ea033a1eb437f52bfb563fdb2d7b4bef08ef77d2c51063bb81fbbbf235" manifest:media-type="png"/></manifest:manifest>

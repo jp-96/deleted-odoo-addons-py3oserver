@@ -84,8 +84,7 @@ RUN pip install \
 	--upgrade \
 	--use-wheel \
 	--no-index \
-	--find-links=https://wheelhouse.xcg.io/18.04/py3o.renderserver/ \
-	--find-links=https://wheelhouse.xcg.io/18.04/py3o.fusion/ \
+	--find-links=file:///usr/local/src/whl/py3o/ \
 	-r  /usr/local/src/pip_requirements.txt \
 	--system
 

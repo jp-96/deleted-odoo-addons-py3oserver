@@ -96,38 +96,16 @@ CMD ["-c", "/etc/supervisor/supervisord.conf", "-n"]
 # https://moji.or.jp/ipafont/license/
 # ###################################
 
-# Install tools
-RUN set -x ; \
-    apt-get update \
-    && apt-get -y -q install \
-        # tools - curl unzip
-        curl \
-        unzip \
-    && apt-get clean \
-&&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # Install Japanese fonts
-RUN mkdir -p /tmp/ipafonts && cd /tmp/ipafonts \
-    # IPAmj Mincho Font
-    && curl -o ipamjm00601.zip -sSL https://dforest.watch.impress.co.jp/library/i/ipamjfont/10750/ipamjm00601.zip \
-    && unzip ipamjm00601.zip -d /usr/share/fonts/truetype/ipamjm0601 \
+RUN set -x ; \
+	apt-get update && apt-get -y -q install unzip \
+    && apt-get clean \
+	&&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+	# IPAmj Mincho Font
+    && unzip /usr/local/src/fonts/ipamjm00601.zip -d /usr/share/fonts/truetype/ipamjm0601 \
     # IPAex Font（2 fonts）
-    && curl -o IPAexfont00401.zip -sSL https://dforest.watch.impress.co.jp/library/i/ipaexfont/10821/IPAexfont00401.zip \
-    && unzip IPAexfont00401.zip -d /usr/share/fonts/truetype/ipaexfont00401 \
+    && unzip /usr/local/src/fonts/IPAexfont00401.zip -d /usr/share/fonts/truetype/ipaexfont00401 \
     # IPA Font（4 fonts）
-    && curl -o IPAfont00303.zip -sSL https://moji.or.jp/wp-content/ipafont/IPAfont/IPAfont00303.zip \
-    && unzip IPAfont00303.zip -d /usr/share/fonts/truetype/ipafont00303 \
+    && unzip /usr/local/src/fonts/IPAfont00303.zip -d /usr/share/fonts/truetype/ipafont00303 \
     # Build font information cache files
-    && fc-cache -vf \
-    && rm -rf /tmp/ipafonts
-
-# patch - py3o.template
-RUN pip uninstall -y py3o.template \
-    && mkdir -p /root/py3o && cd /root/py3o \
-    && curl -o py3o.template-0.10.0.tar.gz https://files.pythonhosted.org/packages/96/f6/698c45e3cc74ce801126a1f91d628884867e3c9b20dcfca2402ea3c803a7/py3o.template-0.10.0.tar.gz \
-	&& tar -zxvf py3o.template-0.10.0.tar.gz \
-    && cd py3o.template-0.10.0 \
-	&& patch py3o/template/main.py < /usr/local/src/staticimage.patch \
-	&& python setup.py build && python setup.py install
-
-ADD example /root/example
+    && fc-cache -vf
